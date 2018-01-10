@@ -11,14 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/')
+    ->name('home')
+    ->uses('HomeController@index');
+
+// Login
 
 Route::get('/login')
     ->name('login.redirect')
     ->uses('Auth\LoginController@redirectToProvider');
 
 Route::get('/login/callback')
-    ->name('login.redirect')
+    ->name('login.callback')
     ->uses('Auth\LoginController@handleProviderCallback');
+
+// Slack
+
+Route::get('/slack/callback')
+    ->name('slack.callback')
+    ->uses('Auth\SlackController@handleProviderCallback');

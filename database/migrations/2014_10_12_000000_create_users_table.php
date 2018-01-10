@@ -6,30 +6,20 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('name')->default('');
+            $table->string('username')->default('');
+            $table->string('avatar')->default('');
+            $table->string('spotify_token')->default('');
+            $table->string('spotify_refresh_token')->default('');
+            $table->datetime('spotify_token_expires')->nullable();
+            $table->string('slack_token')->nullable();
+            $table->string('slack_user_id')->nullable();
+            $table->string('slack_webhook_url')->nullable();
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('users');
     }
 }
