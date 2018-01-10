@@ -9,3 +9,4 @@ app/storage/
 public/storage
 storage/*.key
 .env
+/.php_cs.cache
