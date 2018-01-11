@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use SpotifyWebAPI\Session;
@@ -33,7 +34,7 @@ class LoginController extends Controller
         if (!$user = $this->getUser($data)) {
             $user = $this->createUser($data);
         } elseif ($user->spotify_token_expires && $user->spotify_token_expires->lt(now())) {
-            $this->refreshAccessToken($data->refreshToken);
+            $this->refreshAccessToken($user, $data->refreshToken);
         }
 
         Auth::login($user);
@@ -43,7 +44,7 @@ class LoginController extends Controller
 
     protected function getUser($data)
     {
-        return User::where('username', trim($data->getNickname()))->first();
+        return User::where('username', trim($data->getId()))->first();
     }
 
     protected function createUser($data): User
@@ -58,14 +59,13 @@ class LoginController extends Controller
         ]);
     }
 
-    protected function refreshAccessToken($refresh_token)
+    protected function refreshAccessToken(User $user, $refresh_token)
     {
         $this->session->refreshAccessToken($refresh_token);
 
-        Auth::user()->update([
+        $user->update([
             'spotify_token' => $this->session->getAccessToken(),
-            'spotify_refresh_token' => $this->session->getRefreshToken(),
-            'spotify_token_expires' => $this->session->getTokenExpiration() ? now()->addSecond($this->session->getTokenExpiration()) : null,
+            'spotify_token_expires' => $this->session->getTokenExpiration() ? Carbon::createFromTimestamp($this->session->getTokenExpiration()) : null,
         ]);
     }
 }
