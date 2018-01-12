@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use GuzzleHttp\Client;
+use Rollbar\Payload\Level;
+use Rollbar\Rollbar;
 use SpotifyWebAPI\SpotifyWebAPI;
 
 class EventsController extends Controller
@@ -87,6 +89,8 @@ class EventsController extends Controller
         $data = json_decode($response->getBody());
 
         if (!$data->ok) {
+            Rollbar::log(Level::DEBUG, 'Couldn\'t fetch channel data.', $event);
+
             return null;
         }
 
