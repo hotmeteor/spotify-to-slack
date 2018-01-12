@@ -2,6 +2,10 @@
 
 return [
 
+    'rollbar' => [
+        'key' => env('ROLLBAR_ACCESS_TOKEN'),
+    ],
+
     'spotify' => [
         'client_id' => env('SPOTIFY_KEY'),
         'client_secret' => env('SPOTIFY_SECRET'),
