@@ -29,7 +29,7 @@ class SlackCurrentlyPlaying extends Notification
     {
         return (new SlackMessage())
             ->success()
-            ->content($notifiable->name. 'is listening to:')
+            ->content($notifiable->name. ' is listening to:')
             ->attachment(function ($attachment) {
                 $attachment->title($this->track->title, $this->track->url)
                     ->image($this->track->image)
