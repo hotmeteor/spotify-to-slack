@@ -30,3 +30,9 @@ Route::get('/login/callback')
 Route::get('/slack/callback')
     ->name('slack.callback')
     ->uses('Auth\SlackController@handleProviderCallback');
+
+// Events
+
+Route::post('/events')
+    ->name('events')
+    ->uses('EventsController@store');
