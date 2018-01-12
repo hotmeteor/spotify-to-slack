@@ -41,7 +41,7 @@ class LoginController extends Controller
     protected function createUser($data): User
     {
         return User::create([
-            'name' => $data->getName(),
+            'name' => !empty($data->getName()) ? $data->getName() : $data->getId(),
             'username' => $data->getId(),
             'avatar' => $data->getAvatar(),
             'spotify_token' => $data->token,
