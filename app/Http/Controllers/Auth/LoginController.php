@@ -26,8 +26,14 @@ class LoginController extends Controller
 
         if (!$user = $this->getUser($data)) {
             $user = $this->createUser($data);
-        } elseif ($user->tokenHasExpired()) {
-            $user->refreshAccessToken();
+        } else {
+            if (!$user->spotify_token) {
+                $this->updateUser($user, $data);
+            }
+
+            if ($user->tokenHasExpired()) {
+                $user->refreshAccessToken();
+            }
         }
 
         Auth::login($user);
@@ -46,6 +52,15 @@ class LoginController extends Controller
             'name' => !empty($data->getName()) ? $data->getName() : $data->getId(),
             'username' => $data->getId(),
             'avatar' => $data->getAvatar(),
+            'spotify_token' => $data->token,
+            'spotify_refresh_token' => $data->refreshToken,
+            'spotify_token_expires' => $data->expiresIn ? now()->addSecond($data->expiresIn) : null,
+        ]);
+    }
+
+    protected function updateUser($user, $data)
+    {
+        $user->update([
             'spotify_token' => $data->token,
             'spotify_refresh_token' => $data->refreshToken,
             'spotify_token_expires' => $data->expiresIn ? now()->addSecond($data->expiresIn) : null,
