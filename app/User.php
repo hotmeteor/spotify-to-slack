@@ -22,6 +22,16 @@ class User extends Authenticatable
         return $this->hasMany(Track::class, 'user_id');
     }
 
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = trim($value);
+    }
+
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = trim($value);
+    }
+
     public function routeNotificationForSlack()
     {
         return $this->slack_webhook_url;
