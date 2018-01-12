@@ -29,10 +29,10 @@ class LoginController extends Controller
         } else {
             if (empty($user->spotify_token)) {
                 $this->updateUser($user, $data);
-            }
-
-            if ($user->tokenHasExpired()) {
-                $user->refreshAccessToken();
+            } else {
+                if ($user->tokenHasExpired()) {
+                    $user->refreshAccessToken();
+                }
             }
         }
 
