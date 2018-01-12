@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Rollbar\Payload\Level;
 use Rollbar\Rollbar;
 
 class Handler extends ExceptionHandler
