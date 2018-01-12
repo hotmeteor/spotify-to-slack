@@ -37,8 +37,8 @@ class UpdateCurrentlyPlaying extends Command
             $track = $user->tracks()->create([
                 'track_id' => $new_track->getId(),
                 'title' => $new_track->getTrackName(),
-                'artist' => $new_track->getArtist()->name,
-                'album' => $new_track->getAlbum()->name,
+                'artist' => optional($new_track->getArtist())->name,
+                'album' => optional($new_track->getAlbum())->name,
                 'url' => $new_track->getUrl(),
                 'image' => optional(array_first($new_track->getAlbum()->images))->url,
                 'duration_ms' => $new_track->getDurationMs(),
