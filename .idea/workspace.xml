@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="244bfbff-789d-473f-98b6-b3bb8ff1efeb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
-      <change beforePath="$PROJECT_DIR$/config/services.php" afterPath="$PROJECT_DIR$/config/services.php" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/SlackCurrentlyPlaying.php" afterPath="$PROJECT_DIR$/app/Notifications/SlackCurrentlyPlaying.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,12 +39,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="services.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/services.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="115">
               <caret line="5" column="42" lean-forward="false" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SlackCurrentlyPlaying.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Notifications/SlackCurrentlyPlaying.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="31" column="57" lean-forward="false" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+              <folding>
+                <element signature="e#37#51#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,9 +106,9 @@
         <option value="$PROJECT_DIR$/app/Services/UpdateCurrentlyPlaying.php" />
         <option value="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" />
         <option value="$PROJECT_DIR$/config/database.php" />
-        <option value="$PROJECT_DIR$/app/Notifications/SlackCurrentlyPlaying.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/config/services.php" />
+        <option value="$PROJECT_DIR$/app/Notifications/SlackCurrentlyPlaying.php" />
       </list>
     </option>
   </component>
@@ -345,12 +356,12 @@
       <option name="presentableId" value="Default" />
       <updated>1515590224206</updated>
       <workItem from="1515590225481" duration="10643000" />
-      <workItem from="1515771478888" duration="6149000" />
+      <workItem from="1515771478888" duration="6207000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16792000" />
+    <option name="totallyTimeSpent" value="16850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="426" y="60" width="1455" height="907" extended-state="0" />
@@ -591,16 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Notifications/SlackCurrentlyPlaying.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding>
-            <element signature="e#37#51#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
@@ -706,6 +707,16 @@
         <state relative-caret-position="115">
           <caret line="5" column="42" lean-forward="false" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Notifications/SlackCurrentlyPlaying.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="31" column="57" lean-forward="false" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+          <folding>
+            <element signature="e#37#51#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
