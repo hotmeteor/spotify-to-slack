@@ -19,4 +19,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Track::class, 'user_id');
     }
+
+    public function routeNotificationForSlack()
+    {
+        return $this->slack_webhook_url;
+    }
 }

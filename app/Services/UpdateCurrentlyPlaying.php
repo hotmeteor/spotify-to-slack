@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Notifications\SlackCurrentlyPlaying;
 use App\SpotifyTrack;
 use App\User;
 use Carbon\Carbon;
@@ -35,7 +36,7 @@ class UpdateCurrentlyPlaying extends Command
         $last_track = $this->getLastTrack($user);
 
         if ($this->shouldUpdate($new_track, $last_track)) {
-            $user->tracks()->create([
+            $track = $user->tracks()->create([
                 'track_id' => $new_track->getId(),
                 'title' => $new_track->getTrackName(),
                 'artist' => $new_track->getArtist()->name,
@@ -43,6 +44,8 @@ class UpdateCurrentlyPlaying extends Command
                 'url' => $new_track->getUrl(),
                 'image' => optional(array_first($new_track->getAlbum()->images))->url,
             ]);
+
+            $user->notify(new SlackCurrentlyPlaying($track));
         }
     }
 
