@@ -27,7 +27,7 @@ class LoginController extends Controller
         if (!$user = $this->getUser($data)) {
             $user = $this->createUser($data);
         } else {
-            if (!$user->spotify_token) {
+            if (empty($user->spotify_token)) {
                 $this->updateUser($user, $data);
             }
 
