@@ -13,6 +13,8 @@ class LoginController extends Controller
     {
         return Socialite::driver('spotify')
             ->scopes([
+                'playlist-modify-public',
+                'playlist-modify-private',
                 'user-read-currently-playing',
             ])
             ->redirect();

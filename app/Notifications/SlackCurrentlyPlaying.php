@@ -36,6 +36,7 @@ class SlackCurrentlyPlaying extends Notification
                     ->fields([
                         'Artist' => $this->track->artist,
                         'Album' => $this->track->album,
+                        'Track ID' => $this->track->track_id,
                     ]);
             });
     }
