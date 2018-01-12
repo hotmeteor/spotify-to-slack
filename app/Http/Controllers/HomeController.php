@@ -28,6 +28,10 @@ class HomeController extends Controller
             return;
         }
 
+        if (Auth::user()->tokenHasExpired()) {
+            Auth::user()->refreshAccessToken();
+        }
+
         $this->api->setAccessToken(Auth::user()->spotify_token);
 
         $track = $this->api->getMyCurrentTrack();

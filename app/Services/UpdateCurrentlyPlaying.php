@@ -5,9 +5,7 @@ namespace App\Services;
 use App\Notifications\SlackCurrentlyPlaying;
 use App\SpotifyTrack;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
-use SpotifyWebAPI\Session;
 use SpotifyWebAPI\SpotifyWebAPI;
 
 class UpdateCurrentlyPlaying extends Command
@@ -19,8 +17,8 @@ class UpdateCurrentlyPlaying extends Command
     public function handle(SpotifyWebAPI $api)
     {
         foreach (User::whereNotNull('spotify_token')->get() as $user) {
-            if ($user->spotify_token_expires->lt(now())) {
-                $this->refreshAccessToken($user);
+            if ($user->tokenHasExpired()) {
+                $user->refreshAccessToken();
             }
 
             $this->updateCurrentlyPlaying($api, $user);
@@ -72,17 +70,5 @@ class UpdateCurrentlyPlaying extends Command
     protected function getLastTrack(User $user)
     {
         return $user->tracks()->latest()->first();
-    }
-
-    protected function refreshAccessToken(User $user)
-    {
-        $session = new Session();
-
-        $session->refreshAccessToken($user->spotify_refresh_token);
-
-        $user->update([
-            'spotify_token' => $session->getAccessToken(),
-            'spotify_token_expires' => $session->getTokenExpiration() ? Carbon::createFromTimestamp($session->getTokenExpiration()) : null,
-        ]);
     }
 }
