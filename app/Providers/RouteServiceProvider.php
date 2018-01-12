@@ -35,6 +35,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
