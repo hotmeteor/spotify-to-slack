@@ -43,4 +43,9 @@ class SpotifyTrack
     {
         return data_get($this->data, 'is_playing');
     }
+
+    public function getDurationMs(): ?int
+    {
+        return data_get($this->data, 'item.duration_ms');
+    }
 }

@@ -11,6 +11,10 @@ class Track extends Authenticatable
 
     protected $guarded = [];
 
+    protected $casts = [
+        'duration_ms' => 'integer',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

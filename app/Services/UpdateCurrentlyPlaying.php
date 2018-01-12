@@ -41,6 +41,7 @@ class UpdateCurrentlyPlaying extends Command
                 'album' => $new_track->getAlbum()->name,
                 'url' => $new_track->getUrl(),
                 'image' => optional(array_first($new_track->getAlbum()->images))->url,
+                'duration_ms' => $new_track->getDurationMs(),
             ]);
 
             $user->notify(new SlackCurrentlyPlaying($track));
