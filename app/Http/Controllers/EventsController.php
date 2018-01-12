@@ -15,6 +15,8 @@ class EventsController extends Controller
             ], 200);
         }
 
+
+
 //        $user = User::where('slack_user_id', request('user_id'))->where('slack_token', request('token'))->firstOrFail();
 //
 //        $text = trim(request('text'));
