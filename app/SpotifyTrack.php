@@ -14,6 +14,11 @@ class SpotifyTrack
         $this->data = $data;
     }
 
+    public function getId()
+    {
+        return data_get($this->data, 'item.id');
+    }
+
     public function getAlbum(): stdClass
     {
         return data_get($this->data, 'item.album');

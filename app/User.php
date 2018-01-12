@@ -14,4 +14,9 @@ class User extends Authenticatable
     protected $casts = [
         'spotify_token_expires' => 'datetime',
     ];
+
+    public function tracks()
+    {
+        return $this->hasMany(Track::class, 'user_id');
+    }
 }
